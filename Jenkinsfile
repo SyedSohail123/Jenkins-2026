@@ -1,19 +1,16 @@
 pipeline {
     agent any
-    triggers {
-        // Tells Jenkins to listen for incoming GitHub push webhooks
-        githubPush()
-    }
+
     stages {
         stage('Checkout') {
             steps {
+                // This checks out the code from the Git repository that triggers it
                 checkout scm
             }
         }
-        stage('Test Webhook') {
+        stage('Test Trigger') {
             steps {
-                echo '🎉 Success! The GitHub webhook successfully triggered this build!'
-                sh 'node index.js'
+                echo 'Success! The pipeline was successfully triggered via GitHub Webhook.'
             }
         }
     }
