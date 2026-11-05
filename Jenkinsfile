@@ -13,6 +13,11 @@ pipeline {
                 echo 'Success! The pipeline was successfully triggered via GitHub Webhook.'
             }
         }
+	stage('Webhook test'){
+            steps {
+	    	echo 'Success! Webhook tested'
+	    }
+	}
     }
 }
 
