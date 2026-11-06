@@ -22,8 +22,9 @@ pipeline {
     post {
         success {
             echo 'Archiving the built artifact...'
-            // Keeps the target file available to download from the Jenkins UI
-            archiveArtifacts artifacts: 'target/*.**', fingerprint: true
+            // The **/ prefix tells Jenkins to search through subdirectories 
+            // for any target folder containing built files
+            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
         }
         always {
             cleanWs()
