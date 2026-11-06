@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo 'Building Java 11 application...'
                 // Generates the artifact inside the target/ directory
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn -f 2)Docker/spring-boot-app/pom.xml clean package'
             }
         }
     }
