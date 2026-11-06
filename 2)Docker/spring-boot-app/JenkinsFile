@@ -16,16 +16,18 @@ pipeline {
                     sh 'mvn clean package'
                 }
             }
+            // Archiving directly inside the stage ensures it happens immediately after compilation
+            post {
+                success {
+                    echo 'Archiving built artifacts...'
+                    // Uses a broad wildcard to catch any file format inside the target directory
+                    archiveArtifacts artifacts: '**/target/*', fingerprint: true
+                }
+            }
         }
     }
 
     post {
-        success {
-            echo 'Archiving the built artifact...'
-            // The **/ prefix tells Jenkins to search through subdirectories 
-            // for any target folder containing built files
-            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-        }
         always {
             cleanWs()
         }
