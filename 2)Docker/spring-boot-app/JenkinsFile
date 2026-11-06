@@ -11,8 +11,10 @@ pipeline {
         stage('Build & Package') {
             steps {
                 echo 'Building Java 11 application...'
-                // Generates the artifact inside the target/ directory
-                sh 'mvn -f 2)Docker/spring-boot-app/pom.xml clean package'
+                // Using single quotes tells the shell to treat the parenthesis as a literal string
+                dir("2)Docker/spring-boot-app") {
+                    sh 'mvn clean package'
+                }
             }
         }
     }
