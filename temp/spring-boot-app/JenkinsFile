@@ -3,7 +3,7 @@ pipeline {
     docker {
       image 'syedsohail321/maven-sohail-docker-agent:v1'
       alwaysPull true
-      args '--user root -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/.m2:/root/.m2 -v /usr/bin/docker:/usr/bin/docker' // mount Docker socket to access the host's Docker daemon
+      args '--user root -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/.m2:/root/.m2' // mount Docker socket to access the host's Docker daemon
     }
   }
   stages {
