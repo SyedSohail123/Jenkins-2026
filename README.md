@@ -56,3 +56,9 @@ systemctl restart docker
 # chmod 600 /home/jenkins/.ssh/authorized_keys
 
 echo "=== Worker Node Provisioning Complete ==="
+
+
+
+### Questions:
+1)adduser vs useradd
+2)mvn clean package vs mvn clean install
